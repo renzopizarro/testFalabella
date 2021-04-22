@@ -24,7 +24,7 @@ EL siguiente entregable contiene la api requerida segun el documento (https://gi
 ```
 3. Correr imagen docker
 ```
-   docker run --name spring-boot-docker -p 8080:8080
+   docker run -p8080:8080 "spring-boot-docker"
 ```
 4. Testear API
 ```
