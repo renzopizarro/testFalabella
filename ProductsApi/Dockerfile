@@ -1,11 +1,11 @@
 
-FROM maven:3.6.0-jdk-8 AS build
-COPY pom.xml /app/
-COPY src /app/src
-RUN mvn -f /app/pom.xml clean package
+FROM maven:3.6.0-jdk-8-alpine as builder
+COPY  . /root/app/
+WORKDIR /root/app
+RUN mvn install
 
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ADD target/productsApi-1.0.0.jar app.jar
+FROM openjdk:8-jdk-alpine as jdk8
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+COPY --from=builder /root/app/ /home/app/
+WORKDIR /home/app
+ENTRYPOINT ["java","-jar", "-Xmx15m", "./target/productsApi-1.0.0.jar"]
