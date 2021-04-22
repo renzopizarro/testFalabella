@@ -12,6 +12,7 @@ EL siguiente entregable contiene la api requerida segun el documento (https://gi
 ### Tecnologías
 - Spring Boot
 - Base de datos H2
+- Docker
 
 ### Correr la aplicación
 1. Descargar Todos los archivos del repositorio  
